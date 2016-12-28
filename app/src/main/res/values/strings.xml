@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">AppUbicaciones</string>
+    <string name="title_activity_principal">PrincipalActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_seguimiento">SeguimientoActivity</string>
+
+    <string name="cloudant_username">80e61110-dc96-4f70-aec3-fc261bec18e3-bluemix</string>
+    <string name="cloudant_dbname">db_ubicaciones</string>
+    <string name="cloudant_api_key">80e61110-dc96-4f70-aec3-fc261bec18e3-bluemix</string>
+    <string name="cloudant_api_password">94cf51f2da161be5dd501dfbe9406fb4637957b22c903d00ae57636256ad871c</string>
+</resources>
