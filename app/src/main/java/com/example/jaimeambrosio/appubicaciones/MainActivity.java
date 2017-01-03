@@ -17,6 +17,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ibm.mobilefirstplatform.clientsdk.android.analytics.api.Analytics;
+import com.ibm.mobilefirstplatform.clientsdk.android.core.api.BMSClient;
+import com.ibm.mobilefirstplatform.clientsdk.android.core.api.Response;
+import com.ibm.mobilefirstplatform.clientsdk.android.core.api.ResponseListener;
+
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity {
 
     final static int GETLOCATION_PERMISO = 1;
@@ -45,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
+        BMSClient.getInstance().initialize(getApplicationContext(), BMSClient.REGION_US_SOUTH); // Asegúrese de apuntar a su región
+        // En este código de ejemplo, Analytics está configurado para registrar sucesos de ciclo de vida.
+        Analytics.init(getApplication(), "AppUbicaciones", "82b1df4a-7135-443c-b465-bdd319388131", true, Analytics.DeviceEvent.ALL);
+        Analytics.enable();
         myLocationListener = null;
         locationManager = (LocationManager) this.getSystemService(this.LOCATION_SERVICE);
 
@@ -217,4 +228,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+
+        Analytics.send(new ResponseListener() {
+            @Override
+            public void onSuccess(Response response) {
+            }
+
+            @Override
+            public void onFailure(Response response, Throwable t, JSONObject extendedInfo) {
+            }
+        });
+        super.onDestroy();
+    }
 }

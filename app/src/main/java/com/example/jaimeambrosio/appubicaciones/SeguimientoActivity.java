@@ -14,6 +14,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -52,6 +53,7 @@ public class SeguimientoActivity extends AppCompatActivity implements OnMapReady
     CloudantSync cloudant;
     private GoogleMap map;
     LocationManager locationManager;
+    final static int PERMISO = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -217,6 +219,5 @@ public class SeguimientoActivity extends AppCompatActivity implements OnMapReady
         public void onProviderDisabled(String provider) {
         }
     }
-
 
 }

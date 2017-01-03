@@ -39,6 +39,7 @@ public class UbicacionesService extends Service {
     DocumentRevision revision;
     NotificationCompat.Builder builder;
 
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -52,13 +53,14 @@ public class UbicacionesService extends Service {
 
         String nombre = intent.getStringExtra("nombre");
         revision = cloudant.crearSeguimiento(nombre);
-
+        int minTime = 1000;
+        float minDistance = 20;
         locationManager = (LocationManager) this.getSystemService(this.LOCATION_SERVICE);
         listener = new MyLocationListener();
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(getApplicationContext(), "sin permisos", Toast.LENGTH_SHORT).show();
         } else {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, 0.3f, listener);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, minTime, minDistance, listener);
             lauchNotification();
         }
         return Service.START_NOT_STICKY;
@@ -91,7 +93,7 @@ public class UbicacionesService extends Service {
             revision.setBody(DocumentBodyFactory.create(map));
             revision = cloudant.updateDocumentFromRevision(revision);
 
-            String valor = l.getLongitude() + " - " + l.getLatitude() + " : " + l.getSpeed() + " m/s";
+            String valor = l.getLongitude() + ";" + l.getLatitude() + ":" + l.getSpeed() + " m/s";
             builder.setContentText(valor);
             startForeground(1, builder.build());
 
