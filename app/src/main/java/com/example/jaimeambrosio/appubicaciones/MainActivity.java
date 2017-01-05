@@ -11,18 +11,13 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.ibm.mobilefirstplatform.clientsdk.android.analytics.api.Analytics;
-import com.ibm.mobilefirstplatform.clientsdk.android.core.api.BMSClient;
-import com.ibm.mobilefirstplatform.clientsdk.android.core.api.Response;
-import com.ibm.mobilefirstplatform.clientsdk.android.core.api.ResponseListener;
-
-import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,10 +47,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
-        BMSClient.getInstance().initialize(getApplicationContext(), BMSClient.REGION_US_SOUTH); // Asegúrese de apuntar a su región
+        //  BMSClient.getInstance().initialize(getApplicationContext(), BMSClient.REGION_US_SOUTH); // Asegúrese de apuntar a su región
         // En este código de ejemplo, Analytics está configurado para registrar sucesos de ciclo de vida.
-        Analytics.init(getApplication(), "AppUbicaciones", "82b1df4a-7135-443c-b465-bdd319388131", true, Analytics.DeviceEvent.ALL);
-        Analytics.enable();
+        //  Analytics.init(getApplication(), "AppUbicaciones", "82b1df4a-7135-443c-b465-bdd319388131", true, Analytics.DeviceEvent.ALL);
+        //      Analytics.enable();
         myLocationListener = null;
         locationManager = (LocationManager) this.getSystemService(this.LOCATION_SERVICE);
 
@@ -122,8 +117,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-
     }
 
     private void getLocation(String proveedor) {
@@ -146,6 +139,27 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Proveedor desactivado", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.btnServicios) {
+            Intent i = new Intent(MainActivity.this, PrincipalActivity.class);
+            startActivity(i);
+
+        }if (id == R.id.btnSeg) {
+            Intent i = new Intent(MainActivity.this, SeguimientoActivity.class);
+            startActivity(i);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -231,15 +245,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
 
-        Analytics.send(new ResponseListener() {
-            @Override
-            public void onSuccess(Response response) {
-            }
+        //  Analytics.send(new ResponseListener() {
+        //       @Override
+        //       public void onSuccess(Response response) {
+        //       }
 
-            @Override
-            public void onFailure(Response response, Throwable t, JSONObject extendedInfo) {
-            }
-        });
+        //        @Override
+        //        public void onFailure(Response response, Throwable t, JSONObject extendedInfo) {
+        //       }
+        //    });
         super.onDestroy();
     }
 }

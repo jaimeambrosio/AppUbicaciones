@@ -47,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:text="-" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -84,6 +85,7 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -115,6 +117,7 @@
                 android:layout_height="wrap_content"
                 android:text="-" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -150,35 +153,38 @@
     </TableLayout>
 
     <EditText
+        android:id="@+id/etLatitud"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
         android:ems="10"
         android:hint="latitud"
-        android:id="@+id/etLatitud" />
+        android:inputType="textPersonName" />
 
     <EditText
+        android:id="@+id/etLongitud"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="longitud"
         android:ems="10"
-        android:id="@+id/etLongitud" />
+        android:hint="longitud"
+        android:inputType="textPersonName" />
 
     <Button
-        android:text="Abrir maps"
+        android:id="@+id/btnmostrarmapa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnmostrarmapa" />
+        android:text="Abrir maps" />
+
     <Button
         android:id="@+id/btnIrServicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Servicios"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        /><Button
+        android:visibility="gone" />
+
+    <Button
         android:id="@+id/btnSeguidor"
-        android:text="Seguimiento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:text="Seguimiento"
+        android:visibility="gone" />
 </LinearLayout>

@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -22,8 +20,6 @@ import android.widget.TextView;
 
 import com.example.jaimeambrosio.appubicaciones.Services.Constants;
 import com.example.jaimeambrosio.appubicaciones.Services.EjemploService;
-
-import org.w3c.dom.Text;
 
 public class PrincipalActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -84,9 +80,9 @@ public class PrincipalActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.principal, menu);
-        return true;
+        // getMenuInflater().inflate(R.menu.menu_main, menu);
+        //return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -97,7 +93,7 @@ public class PrincipalActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.btnSeguidor) {
             return true;
         }
 

@@ -1,6 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
+    packagingOptions {
+        pickFirst 'META-INF/ASL2.0'
+        pickFirst 'META-INF/LICENSE'
+        pickFirst 'META-INF/NOTICE'
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.1"
     defaultConfig {
@@ -22,6 +27,7 @@ android {
 repositories {
     mavenLocal()
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -31,8 +37,9 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.0.1'
     compile 'com.android.support:design:25.0.1'
-    compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android', version:'latest.release'
+    compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android', version: 'latest.release'
     testCompile 'junit:junit:4.12'
     compile 'com.google.android.gms:play-services-maps:10.0.1'
     compile 'com.ibm.mobilefirstplatform.clientsdk.android:analytics:1.+'
+    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
 }
